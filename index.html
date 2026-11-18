@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELVE | Lujo Silencioso & Ropa Femenina Sin Costuras</title>
+  
+  <meta name="description" content="Velve: bodies sin costuras, ropa deportiva y casual-elegante. Extrema comodidad y versatilidad para transitar del entrenamiento matutino a la oficina y la noche con elegancia atemporal.">
+  <meta name="keywords" content="Velve, bodies sin costuras, quiet luxury, activewear elegante, bodies de mujer, moda minimalista, ropa sin fricción">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="VELVE | Lujo Silencioso & Ropa Femenina Sin Costuras">
+  <meta property="og:description" content="Comodidad que transita contigo. Prendas sin costuras creadas para fundirse con tu cuerpo del gimnasio al cóctel.">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon: Monograma Velve -->
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png?v=20261112_1">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=20261112_1">
+  <link rel="apple-touch-icon" href="assets/icons/favicon.png?v=20261112_1">
+  
+  <!-- Google Fonts: Cormorant Garamond, Playfair Display, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=20261112_1">
+  
+  <style>
+    /* CRITICAL ADMIN MODAL & SEPARATED CATALOG VIEW STYLES */
+    .admin-login-modal-backdrop {
+      position: fixed !important;
+      inset: 0 !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 999999 !important;
+      background: rgba(26, 25, 24, 0.78) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      display: none !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 1.25rem !important;
+      box-sizing: border-box !important;
+    }
+    .admin-login-modal-backdrop.active {
+      display: flex !important;
+    }
+    .admin-login-modal-card {
+      position: relative !important;
+      background: #FFFFFF !important;
+      width: 100% !important;
+      max-width: 440px !important;
+      border-radius: 8px !important;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35) !important;
+      padding: 2.5rem 2rem 2rem !important;
+      border: 1px solid rgba(91, 44, 56, 0.16) !important;
+      box-sizing: border-box !important;
+      z-index: 1000000 !important;
+    }
+    .admin-login-alert {
+      background: #FDF2F2;
+      border: 1px solid #F8B4B4;
+      color: #9B1C1C;
+      border-radius: 4px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.8rem;
+      margin-bottom: 1.25rem;
+      text-align: center;
+      line-height: 1.4;
+      display: none;
+    }
+    /* Sales Navigation & Badges */
+    .nav-link.nav-link-sale {
+      color: #9B1C1C !important;
+      font-weight: 700 !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .nav-sale-pill {
+      background: #9B1C1C;
+      color: #FFFFFF;
+      font-size: 0.62rem;
+      padding: 0.12rem 0.42rem;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .tab-btn.tab-btn-sale {
+      color: #9B1C1C;
+      border-color: rgba(155, 28, 28, 0.35);
+      font-weight: 600;
+    }
+    .tab-btn.tab-btn-sale.active {
+      background-color: #9B1C1C;
+      color: #FFFFFF;
+      border-color: #9B1C1C;
+    }
+    .product-badge.badge-sale {
+      background-color: #9B1C1C !important;
+      color: #FFFFFF !important;
+    }
+    /* Separated Catalog Mode (Hides editorial sections when browsing full catalog/sales) */
+    body.catalog-view-mode #hero,
+    body.catalog-view-mode .brand-ticker,
+    body.catalog-view-mode #categorias,
+    body.catalog-view-mode #lookbook-24h,
+    body.catalog-view-mode #concepto,
+    body.catalog-view-mode .craftsmanship-banner {
+      display: none !important;
+    }
+    body.catalog-view-mode .site-header {
+      background: rgba(249, 248, 246, 0.98) !important;
+      box-shadow: 0 2px 18px rgba(0, 0, 0, 0.05) !important;
+      color: var(--text-primary) !important;
+    }
+    body.catalog-view-mode #coleccion {
+      padding-top: 6.5rem !important;
+      min-height: 80vh;
+    }
+    .catalog-mode-banner {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      background: #F3EFEA;
+      border: 1px solid rgba(91, 44, 56, 0.14);
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    body.catalog-view-mode .catalog-mode-banner {
+      display: flex;
+    }
+    .btn-back-home {
+      background: #FFFFFF;
+      border: 1px solid rgba(91, 44, 56, 0.25);
+      color: var(--accent-wine);
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .btn-back-home:hover {
+      background: var(--accent-wine);
+      color: #FFFFFF;
+    }
+    /* Progressive Load More Footer */
+    .catalog-load-more-wrap {
+      margin-top: 3rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .catalog-progress-track {
+      width: 220px;
+      height: 3px;
+      background: rgba(91, 44, 56, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .catalog-progress-fill {
+      height: 100%;
+      background: var(--accent-wine);
+      width: 25%;
+      transition: width 0.35s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       Top Announcement Bar
+       ========================================================================= -->
+  <aside class="announcement-bar" id="announcementBar" role="region" aria-label="Aviso comercial">
+    <span id="announcementContent">
+      <span id="announcementText">Envío express gratuito en pedidos superiores a $180.000 COP</span>
+      <span class="announcement-dot" aria-hidden="true"></span>
+      <span id="announcementSec">Prendas con tecnología Cero Costuras</span>
+    </span>
+  </aside>
+
+  <!-- =========================================================================
+       Sticky Navigation Header
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Left Navigation Menu -->
+      <nav class="nav-menu" aria-label="Navegación principal">
+        <a href="#coleccion" class="nav-link" id="navLinkCatalogo" data-nav-view="catalog" data-filter="all" style="font-weight: 700; color: var(--accent-wine); border-bottom: 2px solid var(--accent-wine);">Catálogo</a>
+        <a href="#coleccion" class="nav-link nav-link-sale" id="navLinkSales" data-nav-view="catalog" data-filter="sale">
+          <span>Sales</span>
+          <span class="nav-sale-pill">-20%</span>
+        </a>
+        <a href="#categorias" class="nav-link" data-nav-view="home">Categorías</a>
+        <a href="#lookbook-24h" class="nav-link" data-nav-view="home">Studio</a>
+      </nav>
+
+      <!-- Center Typographic Serif Logo: VELVE -->
+      <div class="brand-logo-container">
+        <a href="#" class="brand-logo" id="brandHomeLogo" aria-label="Velve inicio">
+          <!-- Monograma Caligráfico V con Punto Basal -->
+          <img src="assets/icons/logo-monogram.png?v=20261112_1" alt="" class="logo-sprout-icon" style="object-fit: contain;" aria-hidden="true">
+          <span class="logo-text">VELVE</span>
+        </a>
+      </div>
+
+      <!-- Right Header Actions (Search, Account, Slide-out Cart) -->
+      <div class="header-actions">
+        <!-- Search Trigger -->
+        <button class="action-icon-btn" id="openSearchBtn" aria-label="Buscar productos" title="Buscar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Account / Admin Access Icon (Secured) -->
+        <a href="admin.html" class="action-icon-btn" id="headerAdminAuthBtn" aria-label="Portal de Administración" title="Portal de Administración Velve">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+
+        <!-- Slide-out Cart Trigger -->
+        <button class="action-icon-btn cart-btn" id="openCartBtn" aria-label="Abrir bolsa de compras" title="Bolsa de compra">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" id="cartBadge">1</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Section 2: Hero Immersive (100vh)
+       ========================================================================= -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-background-wrapper">
+        <img src="assets/images/hero_model.jpg" 
+             alt="Mujer Velve en body seamless color moca, elegancia y confort minimalista" 
+             class="hero-bg-image" 
+             id="heroBgImage">
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <span class="hero-badge" id="heroBadge">
+          <img src="assets/icons/logo-monogram-light.png?v=20261112_1" alt="" width="18" height="15" style="object-fit: contain;" aria-hidden="true">
+          Arquitectura de Bodysuits &bull; Quiet Luxury
+        </span>
+        <h1 class="hero-title" id="heroTitle">Tan estructural como la seda, tan suave como Velve.</h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          Muévete de formas que te hagan sentir bien. Bodysuits arquitectónicos en microfibra segunda piel con acabado tono sobre tono, concebidos bajo el estándar puro del lujo silencioso.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#coleccion" class="btn btn-wine" id="heroCta1">Descubre la Colección</a>
+          <a href="#coleccion" class="btn btn-outline-white" id="heroCta2" data-filter="sale">Explorar Sales -20%</a>
+        </div>
+      </div>
+
+      <!-- Animated Scroll Prompt -->
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span>Desliza</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Brand Ticker / Marquee
+         ========================================================================= -->
+    <div class="brand-ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> CERO COSTURAS</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> LUJO SILENCIOSO</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> DEL ESTUDIO AL CÓCTEL</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> CORTE TRIDIMENSIONAL</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> TERMO-ADAPTABILIDAD</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> SUJECIÓN INTELIGENTE</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> CERO COSTURAS</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> LUJO SILENCIOSO</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> DEL ESTUDIO AL CÓCTEL</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> CORTE TRIDIMENSIONAL</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> TERMO-ADAPTABILIDAD</div>
+        <div class="ticker-item"><span class="ticker-bullet">&bull;</span> SUJECIÓN INTELIGENTE</div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         Section 3 (E-Commerce First): Catálogo Principal & Sales (Carga Progresiva)
+         ========================================================================= -->
+    <section class="bestsellers-section" id="coleccion">
+      <div class="container">
+
+        <!-- Banner visible in Separated Catalog Mode -->
+        <div class="catalog-mode-banner" id="catalogModeBanner">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button type="button" class="btn-back-home" id="btnExitCatalogMode">
+              &larr; Volver a Inicio
+            </button>
+            <span id="catalogModeActiveTitle" style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">
+              Vista Exclusiva de Catálogo
+            </span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--text-secondary);">
+            Las prendas se cargan automáticamente a medida que avanzas
+          </span>
+        </div>
+        
+        <div class="section-header-row">
+          <div>
+            <span class="text-eyebrow" id="catalogSectionEyebrow">Catálogo Oficial E-Commerce</span>
+            <h2 class="section-title" id="catalogSectionTitle" style="margin-bottom: 0.5rem;">Catálogo &amp; Colección</h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">
+              Selecciona el tono de cada prenda o filtra por categoría. Nuevas piezas se cargan automáticamente al deslizar.
+            </p>
+          </div>
+          
+          <!-- Category Filter Pills -->
+          <div class="bestseller-filter-tabs" id="categoryFilterTabs">
+            <button class="tab-btn active" data-filter="all">Todas</button>
+            <button class="tab-btn tab-btn-sale" data-filter="sale">Sales %</button>
+            <button class="tab-btn" data-filter="Bodies">Bodys</button>
+            <button class="tab-btn" data-filter="Leggings">Leggings</button>
+            <button class="tab-btn" data-filter="Tops">Tops</button>
+            <button class="tab-btn" data-filter="Shorts">Shorts</button>
+            <button class="tab-btn" data-filter="Enterizos Largos">Enterizos Largos</button>
+            <button class="tab-btn" data-filter="Enterizos Cortos">Enterizos Cortos</button>
+            <button class="tab-btn" data-filter="Buzos">Buzos</button>
+            <button class="tab-btn" data-filter="Camisetas">Camisetas</button>
+          </div>
+        </div>
+
+        <!-- Catalog Toolbar: Live Search & View Mode Switcher -->
+        <div class="catalog-live-toolbar" style="margin: 1.5rem 0 2rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+          <div style="position: relative; flex: 1; max-width: 440px;">
+            <input type="text" id="catalogLiveSearch" placeholder="Buscar por prenda o color (ej. Jaspeado, Halter, Menta)..." class="form-input" style="width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem; border-radius: 999px; border: 1px solid var(--border-subtle); background: var(--bg-card); font-size: 0.85rem; outline: none; transition: border-color 0.2s ease;">
+            <svg style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <span id="catalogCountLabel" style="font-size: 0.82rem; color: var(--text-secondary); letter-spacing: 0.04em; font-weight: 500;">Catálogo E-Commerce</span>
+            <button type="button" id="btnToggleIsolatedCatalog" class="btn-back-home" title="Ver únicamente el catálogo sin secciones editoriales">
+              Separar Vista Catálogo
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Product Cards Grid (Progressive Batches) -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Rendered dynamically in batches by js/app.js -->
+        </div>
+
+        <!-- Progressive Infinite Scroll Sentinel & Load More Button -->
+        <div class="catalog-load-more-wrap" id="catalogLoadMoreWrap">
+          <div class="catalog-progress-track" aria-hidden="true">
+            <div class="catalog-progress-fill" id="catalogProgressFill"></div>
+          </div>
+          <button type="button" class="btn btn-mocha" id="btnLoadMoreProducts" style="padding: 0.8rem 2.2rem; font-size: 0.78rem;">
+            Cargar más prendas &darr;
+          </button>
+          <div id="catalogScrollSentinel" style="height: 4px; width: 100%;" aria-hidden="true"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 4: Grilla Asimétrica de Categorías (Estilo Mattelsa)
+         ========================================================================= -->
+    <section class="categories-section" id="categorias">
+      <div class="container">
+        
+        <div class="section-header-row">
+          <div>
+            <span class="text-eyebrow">Curaduría Editorial</span>
+            <h2 class="section-title" style="margin-bottom: 0;">Arquitectura de Armario</h2>
+          </div>
+          <a href="#coleccion" class="btn-link" data-nav-view="catalog" data-filter="all">Ir al catálogo completo &rarr;</a>
+        </div>
+
+        <div class="asymmetric-grid">
+          
+          <!-- Card 1: Tall Editorial (La revolución del Body) -->
+          <a href="#coleccion" class="category-card cat-card-tall" data-cat-filter="Bodies">
+            <div class="category-image-wrap">
+              <img id="catCard1Img" src="assets/images/velve_capsule_trio.jpg" alt="Colección Cápsula Tono sobre Tono Velve" class="category-img" loading="lazy">
+              <div class="category-overlay">
+                <span class="cat-badge">Tono sobre Tono</span>
+                <div class="cat-info">
+                  <h3 class="cat-title">Arquitectura del Bodysuit</h3>
+                  <span class="cat-action">Descubrir siluetas &rarr;</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2: Wide Editorial (Movimiento & Studio) -->
+          <a href="#coleccion" class="category-card cat-card-wide" data-cat-filter="Enterizos Largos">
+            <div class="category-image-wrap">
+              <img id="catCard2Img" src="assets/images/pilates_studio.jpg" alt="Activewear y Studio Velve" class="category-img" loading="lazy">
+              <div class="category-overlay">
+                <span class="cat-badge">Activewear & Studio</span>
+                <div class="cat-info">
+                  <h3 class="cat-title">Movimiento Puro</h3>
+                  <span class="cat-action">Explorar conjuntos de pilates &rarr;</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 3: Half 1 (Transición & Sastrería) -->
+          <a href="#coleccion" class="category-card cat-card-half-1" data-cat-filter="Tops">
+            <div class="category-image-wrap">
+              <img id="catCard3Img" src="assets/images/blazer_transition.jpg" alt="Prendas de transición y blazers Velve" class="category-img" loading="lazy">
+              <div class="category-overlay">
+                <span class="cat-badge">Day-to-Night</span>
+                <div class="cat-info">
+                  <h3 class="cat-title">Líneas de Sastrería</h3>
+                  <span class="cat-action">Ver transición &rarr;</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 4: Half 2 (Sales & Ofertas Cápsula) -->
+          <a href="#coleccion" class="category-card cat-card-half-2" style="grid-column: span 5;" data-cat-filter="sale">
+            <div class="category-image-wrap">
+              <img id="catCard4Img" src="assets/images/evening_noir.jpg" alt="Edición nocturna y Sales Velve" class="category-img" loading="lazy">
+              <div class="category-overlay">
+                <span class="cat-badge">Sales &amp; Cápsula Nocturne</span>
+                <div class="cat-info">
+                  <h3 class="cat-title">Líneas Minimalistas &amp; Sales</h3>
+                  <span class="cat-action">Ver ofertas especiales &rarr;</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 5: "24 Horas en Velve" Interactive Lookbook
+         ========================================================================= -->
+    <section class="transition-lookbook-section" id="lookbook-24h">
+      <div class="container">
+        
+        <div class="lookbook-container">
+          
+          <!-- Image Showcase with Smooth Transitions -->
+          <div class="lookbook-image-showcase">
+            
+            <!-- Slide 1: 07:30 AM Studio -->
+            <div class="lookbook-slide active" data-time="morning">
+              <img src="assets/images/pilates_studio.jpg" alt="Velve en el estudio de pilates 07:30 AM" loading="lazy">
+              <div class="lookbook-time-pill">07:30 AM &bull; Studio Pilates</div>
+            </div>
+
+            <!-- Slide 2: 01:30 PM Office / Blazer -->
+            <div class="lookbook-slide" data-time="afternoon">
+              <img src="assets/images/blazer_transition.jpg" alt="Velve con blazer en reunión ejecutiva 01:30 PM" loading="lazy">
+              <div class="lookbook-time-pill">01:30 PM &bull; Boardroom & Lunch</div>
+            </div>
+
+            <!-- Slide 3: 08:30 PM Evening Cocktails -->
+            <div class="lookbook-slide" data-time="evening">
+              <img src="assets/images/evening_noir.jpg" alt="Velve en cena cóctel 08:30 PM" loading="lazy">
+              <div class="lookbook-time-pill">08:30 PM &bull; Rooftop & Dinner</div>
+            </div>
+
+          </div>
+
+          <!-- Interactive Timeline Controls & Details -->
+          <div class="lookbook-controls">
+            <span class="text-eyebrow">La Transformación Velve</span>
+            <h2 class="section-title">24 Horas con la misma prenda base.</h2>
+            <p class="lead-text" style="margin-bottom: 1.5rem;">
+              Observa cómo una misma pieza sin costuras se transforma a lo largo del día. Selecciona un horario para descubrir la fórmula de estilismo.
+            </p>
+
+            <div class="lookbook-timeline-nav">
+              
+              <!-- Button 1 -->
+              <button class="time-slot-btn active" data-time="morning">
+                <span class="time-slot-hour">07:30 AM</span>
+                <div class="time-slot-info">
+                  <h4>Studio & Movimiento</h4>
+                  <p>La prenda en solitario: sujeción suave y respirabilidad total durante tu práctica matutina.</p>
+                </div>
+              </button>
+
+              <!-- Button 2 -->
+              <button class="time-slot-btn" data-time="afternoon">
+                <span class="time-slot-hour">01:30 PM</span>
+                <div class="time-slot-info">
+                  <h4>Reunión & Sastrería</h4>
+                  <p>Superpon un blazer de lana estructurado y mocasines. El body actúa como un top pulcro e impecable.</p>
+                </div>
+              </button>
+
+              <!-- Button 3 -->
+              <button class="time-slot-btn" data-time="evening">
+                <span class="time-slot-hour">08:30 PM</span>
+                <div class="time-slot-info">
+                  <h4>Cena & Cóctel</h4>
+                  <p>Pantalón fluido de satén negro, joyería dorada fina y labial vino tinto. Sofisticación sin esfuerzo.</p>
+                </div>
+              </button>
+
+            </div>
+
+            <a href="#coleccion" class="btn btn-wine">Comprar la Prenda de Transición</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Section 6 (Secondary Editorial): La Esencia Velve (Split Screen)
+         ========================================================================= -->
+    <section class="value-prop-section" id="concepto">
+      <div class="container">
+        <div class="split-screen-grid">
+          
+          <!-- Left: Macro Fabric Texture Card with Interactive Hotspots -->
+          <div class="split-media-wrapper">
+            <div class="texture-card">
+              <img src="assets/images/velve_textile_atelier.jpg" 
+                   alt="Insumos de ingeniería textil Velve: silicona 3D mate, hilo 60 wt y grabado en seco" 
+                   class="texture-img" 
+                   id="valueTextureImg"
+                   loading="lazy">
+              
+              <!-- Hotspot 1 -->
+              <div class="hotspot-tag hotspot-1" title="Protocolo A y B de Manufactura Velve">
+                <span class="pulse-dot"></span>
+                <span>Micro-Bordado 60 wt &amp; Silicona 3D Mate</span>
+              </div>
+
+              <!-- Hotspot 2 -->
+              <div class="hotspot-tag hotspot-2" title="Paleta Tono sobre Tono Velve">
+                <span class="pulse-dot"></span>
+                <span>Obsidian Velvet &bull; Warm Sand &bull; Deep Espresso</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Editorial Philosophy Content -->
+          <div class="split-content">
+            <span class="text-eyebrow">Ingeniería Textil &amp; Identidad Didone</span>
+            <h2 class="section-title" id="valueTitle">Tan estructural como la seda.<br>Tan suave como Velve.</h2>
+            <p class="lead-text" id="valueLead">
+              Derivado del inglés velvet (terciopelo), Velve es el antídoto arquitectónico al ruido visual: microfibras tecnológicas de nailon y elastano que envuelven la silueta en una estructura invisible de confort, postura y lujo silencioso.
+            </p>
+
+            <div class="value-features">
+              
+              <div class="value-feature-item">
+                <span class="feature-num">01</span>
+                <div>
+                  <h3 class="feature-title" id="pillar1Title">Promesa Sensorial Segunda Piel</h3>
+                  <p class="feature-desc" id="pillar1Desc">
+                    Tejidos seamless de alta elongación con tacto aterciopelado que celebran la diversidad corporal sin costuras invasivas ni marcas bajo prendas de sastrería.
+                  </p>
+                </div>
+              </div>
+
+              <div class="value-feature-item">
+                <span class="feature-num">02</span>
+                <div>
+                  <h3 class="feature-title" id="pillar2Title">Precisión en Microescala (Hilo 60 wt &amp; Silicona 3D)</h3>
+                  <p class="feature-desc" id="pillar2Desc">
+                    El monograma caligráfico «V» con punto basal se aplica tono sobre tono en el eje del esternón mediante hilo calibre 60 wt o silicona 3D mate de cero roce interior.
+                  </p>
+                </div>
+              </div>
+
+              <div class="value-feature-item">
+                <span class="feature-num">03</span>
+                <div>
+                  <h3 class="feature-title" id="pillar3Title">Rito de Unboxing en Grabado Seco</h3>
+                  <p class="feature-desc" id="pillar3Desc">
+                    Cada pieza se entrega en estuche rígido tipo cajón en cartón de algodón Raw Cashmere (#D8D0C5) con relieve en seco (Blind Debossing) y papel de seda Alabaster Silk.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <a href="#coleccion" class="btn btn-mocha">Volver al Catálogo</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         Craftsmanship Quote Banner
+         ========================================================================= -->
+    <section class="craftsmanship-banner">
+      <div class="container">
+        <div class="craftsmanship-content">
+          <!-- Monograma Mark -->
+          <img src="assets/icons/logo-monogram-light.png?v=20261112_1" alt="" class="craftsmanship-sprout" style="object-fit: contain;" aria-hidden="true">
+          <blockquote class="craftsmanship-quote" id="manifestoQuoteText">
+            "Tan estructural como la seda, tan suave como Velve. Muévete de formas que te hagan sentir bien."
+          </blockquote>
+          <span class="craftsmanship-author">El Manifiesto Velve &bull; Quiet Luxury &amp; Arquitectura de Bodysuits</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       Section 6: Slide-out Cart (Clean Lateral Checkout Drawer)
+       ========================================================================= -->
+  <div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+  
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Bolsa de compras">
+    
+    <!-- Cart Drawer Header -->
+    <div class="cart-header">
+      <h3 class="cart-title">
+        Tu Bolsa <span class="cart-items-count" id="cartCountHeader">(1)</span>
+      </h3>
+      <button class="close-cart-btn" id="closeCartBtn" aria-label="Cerrar bolsa">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Free Shipping Goal Progress Bar -->
+    <div class="shipping-progress-container">
+      <p class="shipping-progress-msg" id="cartShippingMsg">
+        ¡Felicidades! Disfrutas de <strong>Envío Express Gratuito</strong>
+      </p>
+      <div class="shipping-bar-track">
+        <div class="shipping-bar-fill" id="shippingFillBar"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scrollable List -->
+    <div class="cart-body" id="cartItemsContainer">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- Cart Footer with Subtotal & Checkout -->
+    <div class="cart-footer">
+      <div class="cart-totals-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$189.000</span>
+      </div>
+      <div class="cart-totals-row">
+        <span>Envío Nacional</span>
+        <span style="color: var(--accent-wine); font-weight: 500;">Gratis</span>
+      </div>
+      <div class="cart-totals-row final-total">
+        <span>Total Estimado</span>
+        <span id="cartTotal">$189.000</span>
+      </div>
+
+      <button class="btn btn-wine cart-checkout-btn" id="checkoutBtn" style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; font-weight: 600; padding: 0.95rem 1.25rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span>Finalizar Pedido vía WhatsApp &rarr;</span>
+      </button>
+
+      <div class="payment-security-note">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span>Pago Contra Entrega &bull; Transferencia directa vía WhatsApp</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- =========================================================================
+       1-Page Express WhatsApp Checkout Modal
+       ========================================================================= -->
+  <div class="express-checkout-backdrop" id="expressCheckoutBackdrop" aria-hidden="true">
+    <div class="express-checkout-window" id="expressCheckoutWindow" role="dialog" aria-modal="true" aria-labelledby="expressCheckoutTitle">
+      
+      <!-- Form View -->
+      <div id="expressFormView">
+        <div class="express-checkout-header">
+          <div>
+            <span class="text-eyebrow" style="color: var(--accent-wine); font-weight: 600;">Checkout Rápido &bull; 1 Solo Paso</span>
+            <h3 id="expressCheckoutTitle" class="express-modal-title">
+              Datos de Entrega para tu Pedido
+            </h3>
+            <p class="express-modal-subtitle">
+              Diligencia tus datos para generar tu orden automática y coordinar tu envío directo por WhatsApp.
+            </p>
+          </div>
+          <button class="express-close-btn" id="closeExpressCheckoutBtn" aria-label="Cerrar ventana">&times;</button>
+        </div>
+
+        <!-- Trust & Payment Badge -->
+        <div class="express-payment-badge">
+          <div class="badge-wa-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </div>
+          <div class="badge-text">
+            <strong>Pago Contra Entrega / Transferencia directa vía WhatsApp</strong>
+            <span>Coordina tu pago cómodamente con nuestra asesora por Bancolombia, Nequi, Daviplata o Contra Entrega.</span>
+          </div>
+        </div>
+
+        <!-- Order Summary Strip -->
+        <div class="express-order-summary-box">
+          <div class="summary-top-row">
+            <span class="summary-label">Resumen de tu Bolsa (<span id="expressItemCount">0</span> prendas)</span>
+            <span class="summary-total" id="expressTotalAmount">$0</span>
+          </div>
+          <div id="expressItemsMiniList" class="express-items-mini-list">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Express Checkout Form -->
+        <form id="expressCheckoutForm" class="express-form" novalidate>
+          <div class="express-form-row">
+            <div class="express-form-group">
+              <label for="customerName" class="express-label">
+                Nombre y Apellido <span class="req-star">*</span>
+              </label>
+              <input type="text" id="customerName" class="express-input" placeholder="Ej. Valentina Restrepo" required autocomplete="name">
+              <span class="express-error-hint" id="errName">Por favor ingresa tu nombre completo</span>
+            </div>
+
+            <div class="express-form-group">
+              <label for="customerPhone" class="express-label">
+                Teléfono Celular / WhatsApp <span class="req-star">*</span>
+              </label>
+              <input type="tel" id="customerPhone" class="express-input" placeholder="Ej. 312 901 4455" required autocomplete="tel">
+              <span class="express-error-hint" id="errPhone">Por favor ingresa tu número de contacto</span>
+            </div>
+          </div>
+
+          <div class="express-form-row">
+            <div class="express-form-group" style="flex: 1.8;">
+              <label for="customerAddress" class="express-label">
+                Dirección de Entrega <span class="req-star">*</span>
+              </label>
+              <input type="text" id="customerAddress" class="express-input" placeholder="Ej. Cra 43A # 1-50, Apto 402" required autocomplete="street-address">
+              <span class="express-error-hint" id="errAddress">Ingresa la dirección para el despacho</span>
+            </div>
+
+            <div class="express-form-group" style="flex: 1.2;">
+              <label for="customerCity" class="express-label">
+                Ciudad / Municipio <span class="req-star">*</span>
+              </label>
+              <input type="text" id="customerCity" class="express-input" placeholder="Ej. Medellín, Bogotá, Cali" required autocomplete="address-level2">
+              <span class="express-error-hint" id="errCity">Ingresa la ciudad</span>
+            </div>
+          </div>
+
+          <div class="express-form-group">
+            <label for="orderNotes" class="express-label">
+              Notas o Indicaciones de Entrega <span class="opt-tag">(Opcional)</span>
+            </label>
+            <input type="text" id="orderNotes" class="express-input" placeholder="Ej. Dejar en portería, timbre 402, etc.">
+          </div>
+
+          <button type="submit" class="btn btn-wine express-submit-btn" id="btnSubmitWhatsAppOrder">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>Confirmar Pedido y Chatear por WhatsApp &rarr;</span>
+          </button>
+
+          <div class="express-form-trust">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Tus datos se guardan en tu navegador para facilitar compras futuras. Cero fricción.</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success & Redirection View -->
+      <div id="expressSuccessView" class="express-success-box" style="display: none;">
+        <div class="success-sprout-circle">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+
+        <span class="text-eyebrow" style="color: var(--accent-wine);">¡Pedido Generado con Éxito!</span>
+        <h3 class="success-title">Tu orden <span id="successOrderId" style="color: var(--accent-wine); font-family: monospace;">#VEL-2026</span> está lista</h3>
+        
+        <p class="success-desc">
+          Hemos generado el mensaje estructurado para WhatsApp con todos los detalles de tus prendas y tus datos de entrega.
+        </p>
+
+        <div class="success-actions">
+          <a href="#" id="btnOpenWhatsAppDirect" target="_blank" class="btn btn-wine express-wa-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>Abrir WhatsApp Ahora</span>
+          </a>
+          <button type="button" class="btn btn-outline" id="btnCloseSuccessModal">
+            Volver a la Tienda
+          </button>
+        </div>
+
+        <div class="success-note">
+          ¿No se abrió WhatsApp automáticamente? Haz clic en el botón superior para enviar el mensaje precargado directamente a nuestra línea oficial.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Search Modal Overlay
+       ========================================================================= -->
+  <div class="search-modal-backdrop" id="searchModalBackdrop" aria-hidden="true">
+    <div class="search-modal-inner">
+      <div class="search-bar-wrap">
+        <input type="text" 
+               class="search-input-field" 
+               id="searchInput" 
+               placeholder="¿Qué prenda estás buscando hoy?" 
+               autocomplete="off">
+        <button class="search-clear-btn" id="closeSearchBtn" aria-label="Cerrar búsqueda">&times;</button>
+      </div>
+      
+      <div class="search-suggestions">
+        <span>Tendencias:</span>
+        <button class="search-tag-chip">Body Cuello Halter</button>
+        <button class="search-tag-chip">Moca Cálido</button>
+        <button class="search-tag-chip">Enterizo Pilates</button>
+        <button class="search-tag-chip">Cero Costuras</button>
+        <button class="search-tag-chip">Vino Tinto</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Quick View Modal
+       ========================================================================= -->
+  <div class="quickview-modal-backdrop" id="quickviewBackdrop" aria-hidden="true">
+    <div class="quickview-modal-content">
+      <button class="quickview-close-btn" id="quickviewClose" aria-label="Cerrar detalle">&times;</button>
+      
+      <div class="quickview-media">
+        <img id="qvImage" src="" alt="Prenda Velve">
+      </div>
+
+      <div class="quickview-details">
+        <span id="qvCategory" class="text-eyebrow">Bodies</span>
+        <h3 id="qvTitle" style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400;">Título</h3>
+        <div id="qvPrice" style="font-size: 1.2rem; font-weight: 600; color: var(--accent-wine);">$0</div>
+        
+        <p id="qvDesc" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Descripción</p>
+
+        <!-- Color Variations Selector -->
+        <div>
+          <label style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">
+            Tono / Color: <span id="qvSelectedColorName" style="color: var(--accent-wine); font-weight: 600;"></span>
+          </label>
+          <div class="product-swatches" id="qvSwatches" style="margin-top: 0.5rem; gap: 0.55rem; flex-wrap: wrap;"></div>
+        </div>
+
+        <div id="qvSizeSection">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+            <label id="qvSizeLabel" style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Seleccionar Talla:</label>
+            <button type="button" id="btnOpenSizeGuideFromQv" data-info-modal="size-guide" style="font-size: 0.72rem; color: var(--accent-mocha); text-decoration: underline; font-weight: 500; cursor: pointer;">
+              Guía de Tallas
+            </button>
+          </div>
+          <div class="size-selector" id="qvSizeSelector" style="flex-wrap: wrap;">
+            <button type="button" class="size-pill active" data-size="Talla Única (S a L)" style="width: auto; padding: 0 1rem;">Talla Única (S a L)</button>
+          </div>
+          <p id="qvSizeFitNote" style="font-size: 0.76rem; color: var(--text-secondary); margin-top: 0.45rem; display: none;"></p>
+        </div>
+
+        <div style="background-color: var(--bg-secondary); padding: 1rem; border-radius: var(--radius-subtle); font-size: 0.8rem;">
+          <strong style="color: var(--text-primary); display: block; margin-bottom: 0.2rem;">Composición & Cuidado:</strong>
+          <span id="qvComposition" style="color: var(--text-secondary);">Composición</span>
+        </div>
+
+        <button class="btn btn-wine" id="qvAddBtn" style="margin-top: 0.5rem;">
+          Añadir a mi Bolsa
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Mobile Slide-in Navigation Menu
+       ========================================================================= -->
+  <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" aria-hidden="true"></div>
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-subtle);">
+      <div style="display: flex; align-items: center; gap: 0.55rem;">
+        <img src="assets/icons/logo-monogram.png?v=20261112_1" alt="" width="22" height="18" style="object-fit: contain;">
+        <span style="font-family: var(--font-serif); font-size: 1.2rem; letter-spacing: 0.34em;">VELVE</span>
+      </div>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Cerrar menú" style="margin-bottom: 0;">&times;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="#coleccion" class="mobile-nav-link" data-nav-view="catalog" data-filter="all">Catálogo Completo</a>
+      <a href="#coleccion" class="mobile-nav-link" data-nav-view="catalog" data-filter="sale" style="color: #9B1C1C; font-weight: 700;">Sales -20%</a>
+      <a href="#categorias" class="mobile-nav-link" data-nav-view="home">Categorías</a>
+      <a href="#lookbook-24h" class="mobile-nav-link" data-nav-view="home">Transición 24H</a>
+      <a href="#concepto" class="mobile-nav-link" data-nav-view="home">La Esencia Velve</a>
+    </nav>
+    <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 0.75rem;">
+      <button type="button" class="btn btn-outline" data-info-modal="size-guide" style="width: 100%; padding: 0.7rem; font-size: 0.74rem;">
+        Guía de Tallas Inteligente
+      </button>
+      <a href="admin.html" id="mobileAdminAccessBtn" style="font-size: 0.76rem; color: var(--text-muted); text-align: center; padding: 0.4rem 0;">
+        Portal de Administración &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Toast Notification
+       ========================================================================= -->
+  <div class="toast-notification" id="toastNotification" role="status" aria-live="polite">
+    <img src="assets/icons/logo-monogram-light.png?v=20261112_1" alt="" class="toast-sprout" width="18" height="15" style="object-fit: contain;" aria-hidden="true">
+    <span id="toastMessage">Prenda agregada a tu bolsa.</span>
+  </div>
+
+  <!-- =========================================================================
+       Section 6: Footer Minimalista
+       ========================================================================= -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      
+      <!-- Top Grid: Brand, Nav columns, Newsletter -->
+      <div class="footer-top-grid">
+        
+        <!-- Brand Summary -->
+        <div class="footer-brand-col">
+          <img src="assets/icons/logo-monogram.png?v=20261112_1" alt="" class="footer-sprout-mark" style="object-fit: contain;" aria-hidden="true">
+          <span style="font-family: var(--font-serif); font-size: 1.4rem; letter-spacing: 0.38em;">VELVE</span>
+          <p class="footer-brand-desc">
+            Redefiniendo el lujo silencioso a través de la ingeniería textil sin costuras. Ropa femenina de alto desempeño que transita contigo del día a la noche.
+          </p>
+        </div>
+
+        <!-- Links Column 1: Colecciones -->
+        <div class="footer-nav-col">
+          <h4>Colecciones</h4>
+          <ul class="footer-links">
+            <li><a href="#coleccion">Bodies Clásicos</a></li>
+            <li><a href="#categorias">Activewear & Pilates</a></li>
+            <li><a href="#lookbook-24h">Líneas de Transición</a></li>
+            <li><a href="#coleccion">Edición Nocturne</a></li>
+            <li><a href="#coleccion">Novedades</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 2: Experiencia Velve -->
+        <div class="footer-nav-col">
+          <h4>Atención & Cuidado</h4>
+          <ul class="footer-links">
+            <li><a href="#guia-tallas" data-info-modal="size-guide">Guía de Tallas Inteligente</a></li>
+            <li><a href="#envios" data-info-modal="shipping">Política de Envíos & Retornos</a></li>
+            <li><a href="#cuidado" data-info-modal="care">Cuidado de Microfibras</a></li>
+            <li><a href="#sostenibilidad" data-info-modal="sustainability">Sostenibilidad Textil</a></li>
+            <li><a href="#concierge" data-info-modal="whatsapp-concierge">Contacto con Asesor</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 3: Newsletter (Únete al universo Velve) -->
+        <div class="footer-newsletter-col">
+          <h4>Únete al universo Velve</h4>
+          <p class="newsletter-subtext">
+            Recibe invitaciones privadas a nuestros lanzamientos cápsula y obtén un 10% de cortesía en tu primera orden.
+          </p>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input type="email" 
+                   class="newsletter-input" 
+                   id="newsletterEmail" 
+                   placeholder="Introduce tu correo electrónico" 
+                   required>
+            <button type="submit" class="btn btn-wine newsletter-btn">Unirme</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Giant Watermarked "VELVE" in Serif (Low Opacity) -->
+      <div class="footer-watermark-wrap" aria-hidden="true">
+        <span class="footer-watermark-text">VELVE</span>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-region-picker">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>Colombia (COP $) &bull; Español</span>
+        </div>
+        <div>
+          &copy; 2026 VELVE Studios S.A.S. Todos los derechos reservados. Lujo silencioso y confort sin costuras.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Modal Informativo: Guía de Tallas, Envíos y Cuidado Textil VELVE -->
+  <div class="quickview-modal-backdrop" id="infoModalBackdrop" aria-hidden="true" style="z-index: 2700;">
+    <div class="quickview-modal-content" style="grid-template-columns: 1fr; max-width: 640px; padding: 2.25rem 2rem; max-height: 88vh; overflow-y: auto;">
+      <button type="button" class="quickview-close-btn" id="infoModalCloseBtn" aria-label="Cerrar información">&times;</button>
+      <div>
+        <span class="text-eyebrow" id="infoModalEyebrow">Atención &amp; Ingeniería Textil</span>
+        <h3 id="infoModalTitle" style="font-family: var(--font-serif); font-size: 1.75rem; font-weight: 400; margin: 0.4rem 0 1rem 0;">Guía de Tallas Inteligente</h3>
+        <div id="infoModalBody" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Acceso Seguro a Administración VELVE -->
+  <div class="admin-login-modal-backdrop" id="adminLoginModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle" hidden>
+    <div class="admin-login-modal-card">
+      <button type="button" class="admin-login-close-btn" id="btnCloseAdminLoginModal" aria-label="Cerrar modal">&times;</button>
+      
+      <div class="admin-login-header">
+        <img src="assets/icons/logo-monogram.png?v=20261112_1" alt="" class="admin-login-sprout" style="object-fit: contain;" aria-hidden="true">
+        <span class="admin-login-brand">VELVE STUDIOS</span>
+        <h2 id="adminLoginTitle" class="admin-login-title">Portal de Administración</h2>
+        <p class="admin-login-subtitle">Ingresa tus credenciales autorizadas para acceder al panel de control.</p>
+      </div>
+
+      <form id="storeAdminLoginForm" class="admin-login-form" novalidate>
+        <div id="adminLoginError" class="admin-login-alert" role="alert" style="display: none;"></div>
+
+        <div class="admin-login-group">
+          <label for="adminLoginUser" class="admin-login-label">Usuario</label>
+          <div class="admin-input-wrapper">
+            <svg class="admin-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <input type="text" id="adminLoginUser" class="admin-login-input" placeholder="Usuario o correo" required autocomplete="username">
+          </div>
+        </div>
+
+        <div class="admin-login-group">
+          <div class="admin-login-label-row">
+            <label for="adminLoginPass" class="admin-login-label">Contraseña</label>
+          </div>
+          <div class="admin-input-wrapper">
+            <svg class="admin-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input type="password" id="adminLoginPass" class="admin-login-input" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" id="btnToggleAdminPass" class="admin-pass-toggle-btn" aria-label="Mostrar u ocultar contraseña">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-login-options">
+          <label class="admin-checkbox-label">
+            <input type="checkbox" id="adminRememberMe" checked>
+            <span>Recordar sesión en este equipo</span>
+          </label>
+        </div>
+
+        <button type="submit" id="btnAdminSubmitLogin" class="admin-login-submit-btn">
+          <span>Ingresar al Panel Velve</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        <div style="margin-top: 1rem; text-align: center;">
+          <a href="admin.html" style="font-size: 0.78rem; color: #5B2C38; text-decoration: underline; font-weight: 600;">
+            O ir directamente al Panel de Control (admin.html) &rarr;
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/catalog-data.js?v=20261112_2"></script>
+  <script src="js/store.js?v=20261112_2"></script>
+  <script src="js/app.js?v=20261112_2"></script>
+</body>
+</html>
